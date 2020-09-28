@@ -13,8 +13,8 @@ export default class TestComponent extends Vue {
   text = 'Simple component';
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 div {
-  background: #0f0;
+  background: #d9d9d9;
 }
 </style>

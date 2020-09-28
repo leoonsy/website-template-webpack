@@ -1,7 +1,7 @@
 //конфигурация webpack
-const { mode, config } = require('./webpack.helpers');
+const { nodeEnv, config } = require('./webpack.helpers');
 
-console.log(`Режим: ${mode}`);
+console.log(`Режим: ${nodeEnv}`);
 console.log(`Конфигурация: ${config}`);
 
 module.exports = require(`./webpack.${config}.config`);

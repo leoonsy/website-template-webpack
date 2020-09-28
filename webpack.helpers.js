@@ -1,14 +1,14 @@
 require('dotenv').config();
 
-const mode = process.env.NODE_ENV || 'development';
+const nodeEnv = process.env.NODE_ENV || 'development';
 const config = process.env.CONFIG || 'main';
-const isDev = mode === 'development';
+const isDev = nodeEnv === 'development';
 const isProd = !isDev;
 
 const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash].${ext}`);
 
 exports.filename = filename;
-exports.mode = mode;
+exports.nodeEnv = nodeEnv;
 exports.isDev = isDev;
 exports.isProd = isProd;
 exports.config = config;

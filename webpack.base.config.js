@@ -1,5 +1,6 @@
 //общая конфигурация webpack
 const path = require('path');
+const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
@@ -8,7 +9,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { filename, mode, isDev, isProd } = require('./webpack.helpers');
+const { filename, nodeEnv, isDev, isProd } = require('./webpack.helpers');
 const CopyPlugin = require('copy-webpack-plugin');
 
 const cssLoaders = (extra) => {
@@ -51,6 +52,9 @@ const plugins = () => {
     }),
     new CopyPlugin({
       patterns: [{ from: 'public' }],
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(nodeEnv || 'development'),
     }),
   ];
 
@@ -118,7 +122,7 @@ const jsLoaders = () => {
 };
 
 const baseConfig = {
-  mode,
+  mode: nodeEnv,
   module: {
     rules: [
       {
@@ -166,6 +170,10 @@ const baseConfig = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: jsLoaders(),
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
       },
       {
         test: /\.tsx?$/,

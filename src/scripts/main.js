@@ -1,7 +1,7 @@
 import Test from './Test';
 import Vue from 'vue';
 // import TestComponent from './TestComponent.vue';
-import '../styles/main.scss';
+import '@/styles/main.scss';
 Test();
 
 new Vue({
@@ -13,3 +13,5 @@ new Vue({
     vueContent: 'Vue Content :)',
   }),
 });
+
+console.log(process.env.NODE_ENV);
