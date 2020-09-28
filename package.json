@@ -55,9 +55,9 @@
     "webpack-merge": "^5.1.3"
   },
   "scripts": {
+    "dev": "webpack-dev-server --inline",
     "build": "webpack",
-    "watch": "webpack --watch",
-    "server": "webpack-dev-server --inline"
+    "watch": "webpack --watch"
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.10.5",
