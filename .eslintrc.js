@@ -19,17 +19,28 @@ module.exports = {
       },
     ],
     'no-unused-vars': 'warn',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
-  parserOptions: {
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      legacyDecorators: true,
+  overrides: [
+    {
+      files: ['*.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+      },
     },
+  ],
+  parser: 'vue-eslint-parser',
+  parserOptions: {
+    parser: '@typescript-eslint/parser',
   },
-
+  plugins: ['@typescript-eslint'],
   extends: [
-    'eslint:recommended',
-    'plugin:prettier/recommended',
+    // 'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:vue/recommended',
+    'prettier',
+    'prettier/vue',
+    'prettier/@typescript-eslint',
   ],
 };

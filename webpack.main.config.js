@@ -20,7 +20,7 @@ const plugins = () => {
 //главная конфигурация для верстки и т.д. (без взаимодействия с сервером)
 const mainConfig = merge(baseConfig, {
   entry: {
-    main: './src/scripts/main.js',
+    main: './src/scripts/main.ts',
   },
   output: {
     filename: `scripts/${filename('js')}`,
